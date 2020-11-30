@@ -41,7 +41,7 @@ const quizzesRoutes = require("./routes/quizzes");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-app.use ("/api/quizzes", quizzesRoutes(db));
+app.use ("/", quizzesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -52,9 +52,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/quizzes", (req, res) =>{
-  res.render("quizzes");
-})
 
 app.get("/createQuiz", (req, res)=> {
   res.render("createQuiz");
