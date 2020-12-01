@@ -36,7 +36,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
-const newquizRoutes = require("./routes/new_quiz");
+const newquizRoutes = require("./routes/newquiz");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.post("/createQuiz", (req, res)=> {
+app.get("/createQuiz", (req, res)=> {
   res.render("createQuiz");
 })
 
