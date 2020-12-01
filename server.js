@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/createQuiz", (req, res)=> {
+app.post("/createQuiz", (req, res)=> {
   res.render("createQuiz");
 })
 

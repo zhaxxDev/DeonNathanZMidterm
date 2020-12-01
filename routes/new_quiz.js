@@ -8,9 +8,9 @@ module.exports = (db) => {
       (SELECT id
        FROM users
        WHERE name = $1)
-      , $2, $3, $4);`, [a,b,c,d])
+      , $2, $3, $4);`, [name, quizname, quizurl, privacy])
     .then(data => {
-      res.render("newquestion", );
+      res.render("newquiz", );
     })
     .catch(err => {
       res
