@@ -8,7 +8,6 @@ module.exports = (db) => {
     WHERE is_public = true;`)
     .then(data => {
       const quizzes = data.rows;
-      console.log(quizzes)
       let templateVars = {quizzes: quizzes}
       res.render("quizzes", templateVars);
     })
