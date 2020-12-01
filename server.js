@@ -59,18 +59,25 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
-app.get("/")
-
 app.get("/createQuiz", (req, res)=> {
-  res.render("createQuiz");
+  const templateVars = {
+    username: req.cookies["username"],
+  };
+  res.render("createQuiz", templateVars);
 })
 
 app.get("/myquizzes", (req, res)=> {
-  res.render("myquizzes");
+  const templateVars = {
+    username: req.cookies["username"],
+  };
+  res.render("myquizzes", templateVars);
 })
 
 app.get("/results", (req, res)=> {
-  res.render("results");
+  const templateVars = {
+    username: req.cookies["username"],
+  };
+  res.render("results", templateVars);
 })
 
 app.post("/login", (req, res) => {

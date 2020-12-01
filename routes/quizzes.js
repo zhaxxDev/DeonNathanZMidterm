@@ -3,12 +3,13 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/quizzes",(req, res) => {
+
     db.query(`SELECT name, url
     FROM quizzes
     WHERE is_public = true;`)
     .then(data => {
       const quizzes = data.rows;
-      let templateVars = {quizzes: quizzes}
+      let templateVars = {quizzes: quizzes, username: req.cookies["username"]}
       res.render("quizzes", templateVars);
     })
     .catch(err => {
