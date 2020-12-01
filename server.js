@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const cookieParser = require('cookie-parser')
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -20,7 +21,7 @@ db.connect();
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
-
+app.use(cookieParser())
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -37,7 +38,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
 const newquizRoutes = require("./routes/newquiz");
-
+const newUsers = require("./routes/newUser");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -50,8 +51,12 @@ app.use ("/", newquizRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
 app.get("/", (req, res) => {
-  res.render("index");
+  const templateVars = {
+    username: req.cookies["username"],
+  };
+  res.render("index", templateVars);
 });
 
 app.get("/")
@@ -68,6 +73,17 @@ app.get("/results", (req, res)=> {
   res.render("results");
 })
 
+app.post("/login", (req, res) => {
+  let useR = req.body.username;
+  console.log(useR)
+  res.cookie("username", useR)
+  res.redirect('/')
+});
+
+app.post("/logout", (req, res) => {
+  res.clearCookie("username")
+  res.redirect('/')
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
