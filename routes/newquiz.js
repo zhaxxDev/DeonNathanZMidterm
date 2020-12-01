@@ -14,9 +14,10 @@ module.exports = (db) => {
     const params = [req.body.name, req.body.quizname, req.body.quizurl, req.body.privacy];
     db.query(sql ,params)
     .then(data => {
-      const newquiz = data.rows[0];
-      const vars = { newquiz : newquiz };
-      console.log(vars)
+      console.log(data.rows)
+      const newquiz = data.rows;
+      const vars = { newquiz };
+
       res.render("newquiz", vars)
     })
     .catch(err => {
