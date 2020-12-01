@@ -26,23 +26,33 @@
     <!--Fixed header from the _partials/header-->
     <%- include partials/_header %>
 
-    <section id="create_quiz">
-      <h1>Create a new Quiz</h1>
-      <form action="/newquiz" method="POST">
-        <label for="name">What is your name?: </label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="quizname">Please Name Your Quiz</label>
-        <input type="text" id="quizname" name="quizname"><br><br>
-        <label for="quizurl">Custom URL</label>
-        <input type="text" id="quizurl" name="quizurl"><br><br>
-        <p>Would you like your quiz to be public?</p>
-        <input type="radio" id="public" name="privacy" value=true>
-        <label for="public">Yes</label><br>
-        <input type="radio" id="private" name="privacy" value=false>
-        <label for="private">No</label><br>
-        <input type="submit" value="Submit">
-      </form>
+    <p>quiz id: <%= newquiz[0].id %></p>
 
+    <section id=quizquestions>
+      <form action="/newquestion" method="POST">
+        <label for="question">Enter Question</label>
+        <input type="text" id="question" name="question"><br><br>
+        <label for="answerA">Option A</label>
+        <input type="text" id="answerA" name="answerA"><br><br>
+        <label for="answerB">Option B</label>
+        <input type="text" id="answerB" name="answerB"><br><br>
+        <label for="answerC">Option C</label>
+        <input type="text" id="answerC" name="answerC"><br><br>
+        <label for="answerD">Option D</label>
+        <input type="text" id="answerD" name="answerD"><br><br>
+        <P>Which answer is correct?</P>
+        <input type="radio" id="a" name="correct_answer" value='A'>
+        <label for="a">A</label><br>
+        <input type="radio" id="b" name="correct_answer" value='B'>
+        <label for="b">B</label><br>
+        <input type="radio" id="a" name="correct_answer" value='C'>
+        <label for="c">C</label><br>
+        <input type="radio" id="b" name="correct_answer" value='D'>
+        <label for="d">D</label><br>
+        <input type="submit" value="Submit">
+
+      </form>
+      <button type="button" id="add">Add another question</button>
     </section>
 
 
