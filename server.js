@@ -54,9 +54,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/")
 
 app.get("/createQuiz", (req, res)=> {
   res.render("createQuiz");
+})
+
+app.get("/myquizzes", (req, res)=> {
+  res.render("myquizzes");
 })
 
 app.get("/results", (req, res)=> {
