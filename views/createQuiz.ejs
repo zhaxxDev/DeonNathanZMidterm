@@ -25,13 +25,9 @@
   <body>
     <!--Fixed header from the _partials/header-->
     <%- include partials/_header %>
-
-
     <section id="create_quiz">
       <h1>Create a new Quiz</h1>
       <form action="/newquiz" method="POST">
-        <label for="name">What is your name?: </label>
-        <input type="text" id="name" name="name"><br><br>
         <label for="quizname">Please Name Your Quiz</label>
         <input type="text" id="quizname" name="quizname"><br><br>
         <label for="quizurl">Custom URL</label>
@@ -44,6 +40,7 @@
         <input type="submit" value="Submit">
       </form>
     </section>
+
 
 
 
