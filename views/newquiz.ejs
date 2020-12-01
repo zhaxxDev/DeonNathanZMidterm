@@ -28,7 +28,8 @@
 
     <p>quiz id: <%= newquiz[0].id %></p>
 
-    <section id=quizquestions>
+    <div id="maindiv">
+    <section id="quizquestions">
       <form action="/newquestion" method="POST">
         <label for="question">Enter Question</label>
         <input type="text" id="question" name="question"><br><br>
@@ -49,11 +50,13 @@
         <label for="c">C</label><br>
         <input type="radio" id="b" name="correct_answer" value='D'>
         <label for="d">D</label><br>
-        <input type="submit" value="Submit">
-
       </form>
       <button type="button" id="add">Add another question</button>
     </section>
+    </div>
+      <td><form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="btn btn-primary">Submit</button></form></td>
+      <td><button type="submit" id="add-question-btn" class="btn btn-primary">Add Another Question</button></form></td>
+
 
 
 
