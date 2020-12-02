@@ -39,18 +39,15 @@
 
             <div id="question"><%= question.question %></div>
             <div id="answer-buttons" class="btn-grid">
-              <button class="btn">
-              <label class="answer"> <%= question.answera %> </label>
-              </button>
-              <button class="btn">
-              <label class="answer"> <%= question.answerb %> </label>
-              </button>
-              <button class="btn">
-              <label class="answer"> <%= question.answerc %> </label>
-              </button>
-              <button class="btn">
-              <label class="answer"> <%= question.answerd %> </label>
-              </button>
+
+              <input type="radio" id="a" name="correct_answer" value='A'>
+              <label for="a"> <%= question.answera %> </label><br>
+              <input type="radio" id="b" name="correct_answer" value='B'>
+              <label for="b"> <%= question.answerb %> </label><br>
+              <input type="radio" id="a" name="correct_answer" value='C'>
+              <label for="c"> <%= question.answerc %> </label><br>
+              <input type="radio" id="b" name="correct_answer" value='D'>
+              <label for="d"> <%= question.answerd %> </label><br>
             </div>
           </div>
           </form>
