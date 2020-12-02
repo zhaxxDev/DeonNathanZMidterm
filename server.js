@@ -83,7 +83,12 @@ app.get("/results", (req, res)=> {
 app.post("/login", (req, res) => {
   let useR = req.body.username;
   console.log(useR)
-  const sql = `INSERT INTO users (name)
+  if (useR.length <= 0){
+    res.status(400).json({ error: "Bad Request No Data" })
+  }
+  res.cookie("username", useR)
+  const sql =
+  `INSERT INTO users (name)
   VALUES ($1)
   RETURNING id`
   const params = [useR];
@@ -93,14 +98,13 @@ app.post("/login", (req, res) => {
     console.log("confirm")
     console.log(userID)
     res.cookie("id", userID)
+    res.redirect('/')
   })
   .catch(err => {
     res
       .status(500)
       .json({ error: err.message });
   });
-  res.cookie("username", useR)
-  res.redirect('/')
 });
 
 app.post("/logout", (req, res) => {

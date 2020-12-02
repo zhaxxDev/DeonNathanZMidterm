@@ -3,7 +3,6 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/quizzes",(req, res) => {
-
     db.query(`SELECT name, url
     FROM quizzes
     WHERE is_public = true;`)
