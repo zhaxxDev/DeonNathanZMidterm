@@ -38,7 +38,6 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
 const newquizRoutes = require("./routes/newquiz");
-const newUsers = require("./routes/newUser");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -83,6 +82,13 @@ app.get("/results", (req, res)=> {
 app.post("/login", (req, res) => {
   let useR = req.body.username;
   console.log(useR)
+  const sql = `INSERT INTO users (name)
+  VALUES ($1);`
+  const params = [useR];
+  db.query(sql ,params)
+  .then(
+    console.log("confirm")
+  )
   res.cookie("username", useR)
   res.redirect('/')
 });
