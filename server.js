@@ -38,7 +38,8 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
 const newquizRoutes = require("./routes/newquiz");
-const resultsRoutes = require("./routes/results")
+const resultsRoutes = require("./routes/results");
+const loginRoutes = require("./routes/login");
 
 const { user } = require('pg/lib/defaults');
 // Mount all resource routes
@@ -48,6 +49,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use ("/", quizzesRoutes(db));
 app.use ("/", newquizRoutes(db));
 app.use ("/", resultsRoutes(db))
+app.use ("/", loginRoutes(db))
 // Note: mount other resources here, using the same pattern above
 
 
@@ -75,34 +77,6 @@ app.get("/myquizzes", (req, res)=> {
   };
   res.render("myquizzes", templateVars);
 })
-
-
-app.post("/login", (req, res) => {
-  let useR = req.body.username;
-  console.log(useR)
-  if (useR.length <= 0){
-    res.status(400).json({ error: "Bad Request No Data" })
-  }
-  res.cookie("username", useR)
-  const sql =
-  `INSERT INTO users (name)
-  VALUES ($1)
-  RETURNING id`
-  const params = [useR];
-  db.query(sql ,params)
-  .then(data => {
-    const userID = data.rows[0].id;
-    console.log("confirm")
-    console.log(userID)
-    res.cookie("id", userID)
-    res.redirect('/')
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message });
-  });
-});
 
 app.post("/logout", (req, res) => {
   res.clearCookie("username")
