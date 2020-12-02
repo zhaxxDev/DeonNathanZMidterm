@@ -38,6 +38,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
 const newquizRoutes = require("./routes/newquiz");
+const { user } = require('pg/lib/defaults');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -83,18 +84,28 @@ app.post("/login", (req, res) => {
   let useR = req.body.username;
   console.log(useR)
   const sql = `INSERT INTO users (name)
-  VALUES ($1);`
+  VALUES ($1)
+  RETURNING id`
   const params = [useR];
   db.query(sql ,params)
-  .then(
+  .then(data => {
+    const userID = data.rows[0].id;
     console.log("confirm")
-  )
+    console.log(userID)
+    res.cookie("id", userID)
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  });
   res.cookie("username", useR)
   res.redirect('/')
 });
 
 app.post("/logout", (req, res) => {
   res.clearCookie("username")
+  res.clearCookie("id")
   res.redirect('/')
 });
 
