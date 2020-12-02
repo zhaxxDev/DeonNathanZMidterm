@@ -16,7 +16,7 @@ module.exports = (db) => {
     .then(data => {
       console.log(data.rows)
       const newquiz = data.rows;
-      const vars = { newquiz };
+      const vars = { newquiz, username: req.cookies["username"] };
 
       res.render("newquiz", vars)
     })

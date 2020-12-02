@@ -21,6 +21,22 @@
         <li class="nav-item">
           <a class="nav-link" href="/myquizzes">View Your Quizzes</a>
         </li>
+        <div id="userID">
+          <% if (username) {%>
+            <h4><%=username%></h4>
+            <form class="form-inline" action='/logout' method='POST'>
+            <button type="submit" class="btn-primary">ChangeUser</button>
+            </form>
+            <%} else { %>
+          <form class="form-inline" action='/login' method="POST">
+            <div class="form-group mb-2">
+              <input class="form-control" type="text" name="username" placeholder="Enter your Name" style="width: 300px; margin: 1em">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+          <% } %>
+        </div>
+
       </ul>
     </div>
   </nav>
