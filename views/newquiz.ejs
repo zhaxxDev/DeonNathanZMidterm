@@ -31,16 +31,11 @@
     <div id="maindiv">
     <section id="quizquestions">
       <form action="/newquestion" method="POST">
-        <label for="question">Enter Question</label>
-        <input type="text" id="question" name="question"><br><br>
-        <label for="answerA">Option A</label>
-        <input type="text" id="answerA" name="answerA"><br><br>
-        <label for="answerB">Option B</label>
-        <input type="text" id="answerB" name="answerB"><br><br>
-        <label for="answerC">Option C</label>
-        <input type="text" id="answerC" name="answerC"><br><br>
-        <label for="answerD">Option D</label>
-        <input type="text" id="answerD" name="answerD"><br><br>
+        <input placeholder="Enter Question" type="text" id="question" name="question"><br><br>
+        <input placeholder="Option A" type="text" class="option" id="answerA" name="answerA"><br><br>
+        <input placeholder="Option B" type="text" class="option" id="answerB" name="answerB"><br><br>
+        <input placeholder="Option C" type="text" class="option" id="answerC" name="answerC"><br><br>
+        <input placeholder="Option D" type="text" class="option" id="answerD" name="answerD"><br><br>
         <P>Which answer is correct?</P>
         <input type="radio" id="a" name="correct_answer" value='A'>
         <label for="a">A</label><br>
@@ -51,11 +46,12 @@
         <input type="radio" id="b" name="correct_answer" value='D'>
         <label for="d">D</label><br>
       </form>
-      <button type="button" id="add">Add another question</button>
     </section>
     </div>
-      <td><form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="btn btn-primary">Submit</button></form></td>
-      <td><button type="submit" id="add-question-btn" class="btn btn-primary">Add Another Question</button></form></td>
+    <div class="new-quiz-btns"
+      <form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
+      <button type="submit" id="add-question-btn" class="quizzes">Add Another Question</button></form>
+  </div>
 
 
 
