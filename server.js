@@ -41,6 +41,7 @@ const newquizRoutes = require("./routes/newquiz");
 const resultsRoutes = require("./routes/results");
 const loginRoutes = require("./routes/login");
 const createQuizRoutes = require("./routes/createQuiz");
+const myquizzesRoutes = require("./routes/myquizzes");
 
 const { user } = require('pg/lib/defaults');
 // Mount all resource routes
@@ -49,9 +50,10 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use ("/", quizzesRoutes(db));
 app.use ("/", newquizRoutes(db));
-app.use ("/", resultsRoutes(db))
-app.use ("/", loginRoutes(db))
-app.use ("/", createQuizRoutes (db))
+app.use ("/", resultsRoutes(db));
+app.use ("/", loginRoutes(db));
+app.use ("/", createQuizRoutes());
+app.use ("/", myquizzesRoutes());
 // Note: mount other resources here, using the same pattern above
 
 
@@ -65,13 +67,6 @@ app.get("/", (req, res) => {
   };
   res.render("index", templateVars);
 });
-
-app.get("/myquizzes", (req, res)=> {
-  const templateVars = {
-    username: req.cookies["username"],
-  };
-  res.render("myquizzes", templateVars);
-})
 
 app.post("/logout", (req, res) => {
   res.clearCookie("username")
