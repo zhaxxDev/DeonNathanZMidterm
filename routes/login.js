@@ -8,19 +8,37 @@ module.exports = (db) => {
     if (useR.length <= 0){
       res.status(400).json({ error: "Bad Request No Data" })
     }
-    res.cookie("username", useR)
-    const sql =
-    `INSERT INTO users (name)
-    VALUES ($1)
-    RETURNING id`
-    const params = [useR];
-    db.query(sql ,params)
+    db.query(`SELECT id, name FROM users WHERE name LIKE ($1)`, [useR])
     .then(data => {
-      const userID = data.rows[0].id;
-      console.log("confirm")
-      console.log(userID)
-      res.cookie("id", userID)
-      res.redirect('/')
+      if (data.rows[0] === undefined) {
+        const sql =
+          `INSERT INTO users (name)
+          VALUES ($1)
+          RETURNING id`
+          const params = [useR];
+          db.query(sql ,params)
+          .then(data => {
+            const userID = data.rows[0].id;
+            console.log("confirm")
+            res.cookie("username", useR)
+            console.log(userID)
+            res.cookie("id", userID)
+            res.redirect('/')
+          })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+      } else {
+        const userNAME = data.rows[0].name
+        const userID = data.rows[0].id
+        console.log("confirm")
+        console.log(userID, userNAME)
+        res.cookie("username", userNAME)
+        res.cookie("id", userID)
+        res.redirect('/')
+      }
     })
     .catch(err => {
       res
@@ -31,5 +49,3 @@ module.exports = (db) => {
   return router;
 };
 
-
-//      res.render("results", templateVars);
