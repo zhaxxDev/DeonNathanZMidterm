@@ -40,6 +40,7 @@ const quizzesRoutes = require("./routes/quizzes");
 const newquizRoutes = require("./routes/newquiz");
 const resultsRoutes = require("./routes/results");
 const loginRoutes = require("./routes/login");
+const createQuizRoutes = require("./routes/createQuiz");
 
 const { user } = require('pg/lib/defaults');
 // Mount all resource routes
@@ -50,6 +51,7 @@ app.use ("/", quizzesRoutes(db));
 app.use ("/", newquizRoutes(db));
 app.use ("/", resultsRoutes(db))
 app.use ("/", loginRoutes(db))
+app.use ("/", createQuizRoutes (db))
 // Note: mount other resources here, using the same pattern above
 
 
@@ -63,13 +65,6 @@ app.get("/", (req, res) => {
   };
   res.render("index", templateVars);
 });
-
-app.get("/createQuiz", (req, res)=> {
-  const templateVars = {
-    username: req.cookies["username"],
-  };
-  res.render("createQuiz", templateVars);
-})
 
 app.get("/myquizzes", (req, res)=> {
   const templateVars = {
