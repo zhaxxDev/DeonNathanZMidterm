@@ -77,13 +77,6 @@ app.get("/myquizzes", (req, res)=> {
 })
 
 
-app.get("/results", (req, res)=> {
-  const templateVars = {
-    username: req.cookies["username"],
-  };
-  res.render("results", templateVars);
-})
-
 app.post("/login", (req, res) => {
   let useR = req.body.username;
   console.log(useR)

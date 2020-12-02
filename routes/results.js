@@ -3,6 +3,7 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/results",(req, res) => {
+    const username = req.cookies["username"];
     db.query(`SELECT users.name, quiz_attempts.id, COUNT(questions.*) AS score, quizzes.name AS quizname
     FROM users
     JOIN quiz_attempts ON quiz_attempts.user_id = users.id
@@ -22,7 +23,8 @@ module.exports = (db) => {
         const quiz_total = data.rows;
         const templateVars = {
           quiz_result: quiz_result,
-          quiz_total: quiz_total
+          quiz_total: quiz_total,
+          username: username
         }
         res.render("results", templateVars)
       })
