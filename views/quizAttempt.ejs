@@ -29,9 +29,35 @@
     <p>quiz id: <%= newquiz[0].id %></p>
 
     <div id="quiz-attempt-container">
+      <h1 id="quiz-attempt-message">Attempt Quiz</h1>
+      <% for(let question of newquiz) { %>
+        <%= console.log(question) %>
+      <section id="quiz-attempt">
+          <form action="/results" method="POST">
+          <div id="question-container" class="hide">
+          <label class="question"> </label>
+
+            <div id="question"><%= question.question %></div>
+            <div id="answer-buttons" class="btn-grid">
+              <button class="btn">
+              <label class="answer"> <%= question.answera %> </label>
+              </button>
+              <button class="btn">
+              <label class="answer"> <%= question.answerb %> </label>
+              </button>
+              <button class="btn">
+              <label class="answer"> <%= question.answerc %> </label>
+              </button>
+              <button class="btn">
+              <label class="answer"> <%= question.answerd %> </label>
+              </button>
+            </div>
+          </div>
+          </form>
+        </section>
+        <% } %>
+        <form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
     </div>
-      <td><form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="btn btn-primary">Submit</button></form></td>
-      <td><button type="submit" id="add-question-btn" class="btn btn-primary">Add Another Question</button></form></td>
 
 
 
