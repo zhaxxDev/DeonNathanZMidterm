@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbarBG">
     <a class="navbar-brand" href="/">QuizApp</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
           <% if (username) {%>
             <h4><%=username%></h4>
             <form class="form-inline" action='/logout' method='POST'>
-            <button type="submit" class="btn-primary">ChangeUser</button>
+            <button type="submit" class="btn btn-primary">ChangeUser</button>
             </form>
             <%} else { %>
           <form class="form-inline" action='/login' method="POST">

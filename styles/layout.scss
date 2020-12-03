@@ -124,10 +124,15 @@ button {
   align-items: center;
   flex-direction: row;
 }
-
+#navbarBG {
+  height: 80px;
+}
 #userID {
+  color: white;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-direction: row;
-  justify-content: space-between;
+}
+#userID h4 + form {
+  margin-left: 10px;
 }
