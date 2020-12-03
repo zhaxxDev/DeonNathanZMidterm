@@ -48,11 +48,12 @@
           <label for="d0">D</label><br>
           <input type="hidden" id="quiz_id" name="quiz_id" value=<%= parseInt(newquiz[0].id) %> >
         </div>
+        <form method="POST" action="/newquestions"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
       </form>
     </section>
     </div>
     <div class="new-quiz-btns">
-      <form method="POST" action="/newquestions"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
+
       <button type="submit" id="add-question-btn" class="quizzes">Add Another Question</button></form>
   </div>
 

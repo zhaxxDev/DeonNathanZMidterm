@@ -49,9 +49,15 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use ("/", quizzesRoutes(db));
 app.use ("/", newquizRoutes(db));
+<<<<<<< HEAD
 app.use ("/", resultsRoutes(db));
 app.use ("/", newquestionRoutes(db));
 app.use ("/", quizAttemptRoutes(db));
+=======
+app.use ("/", resultsRoutes(db))
+app.use ("/", newquestionRoutes(db))
+app.use ("/", quizAttemptRoutes(db))
+>>>>>>> f2a622734d3f371ee378d6ec83d6c2008e0f2c9b
 // Note: mount other resources here, using the same pattern above
 
 
@@ -82,9 +88,6 @@ app.get("/myquizzes", (req, res)=> {
 
 app.get("/results", (req, res)=> {
   res.render("results");
-})
-app.get("/quizAttempt", (req, res)=> {
-  res.render("quizAttempt");
 })
 
 
