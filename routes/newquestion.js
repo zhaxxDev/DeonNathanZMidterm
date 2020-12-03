@@ -9,11 +9,11 @@ module.exports = (db) => {
       $1, $2, $3, $4, $5, $6, $7);`;
     let length=req.body.answerA.length
     let paramsarr=[]
-    if (length > 1){
+    if (Array.isArray(req.body.question)){
       for (let i=0; i < length; i++) {
         paramsarr[i] = [req.body.quiz_id, req.body.question[i], req.body.answerA[i], req.body.answerB[i], req.body.answerC[i], req.body.answerD[i], req.body[`correct_answer${i}`]]
       }
-    } else if (length === 1) {
+    } else {
       paramsarr = [[req.body.quiz_id, req.body.question, req.body.answerA, req.body.answerB, req.body.answerC, req.body.answerD, req.body.correct_answer]]
     }
     console.log(paramsarr)
