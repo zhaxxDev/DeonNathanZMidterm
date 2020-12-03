@@ -51,7 +51,7 @@ app.use ("/", quizzesRoutes(db));
 app.use ("/", newquizRoutes(db));
 app.use ("/", resultsRoutes(db));
 app.use ("/", newquestionRoutes(db));
-app.use ("/", quizAttemptRoutes(db));
+
 // Note: mount other resources here, using the same pattern above
 
 
@@ -117,6 +117,8 @@ app.post("/logout", (req, res) => {
   res.clearCookie("id")
   res.redirect('/')
 });
+
+app.use ("/", quizAttemptRoutes(db));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -26,11 +26,11 @@
     <!--Fixed header from the _partials/header-->
     <%- include partials/_header %>
 
-    <p>quiz id: <%= newquiz[0].id %></p>
 
     <div id="quiz-attempt-container">
       <h1 id="quiz-attempt-message">Attempt Quiz</h1>
-      <% for(let question of newquiz) { %>
+      <%= questions[1].name %>
+      <% for(let question of questions) { %>
         <%= console.log(question) %>
       <section id="quiz-attempt">
           <form action="/results" method="POST">

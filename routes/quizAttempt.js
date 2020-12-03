@@ -2,14 +2,19 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/quizAttempt",(req, res) => {
-    const sql = `SELECT * FROM questions;`
-    db.query(sql)
+  router.get("/:quiz",(req, res) => {
+    let quizurl = (req.params.quiz)
+    console.log(quizurl)
+    const sql = `SELECT questions.quiz_id, questions.question, questions.answerA, questions.answerB, questions.answerC, questions.answerD, quizzes.url, quizzes.name
+    FROM quizzes
+    JOIN questions ON questions.quiz_id = quizzes.id
+    WHERE quizzes.url = $1;`
+    db.query(sql, [quizurl])
     .then(data => {
-      console.log(data.rows)
-      const newquiz = data.rows;
+      console.log(data.rows[0])
+      const questions = data.rows;
       const username = req.cookies["username"];
-      const vars = { newquiz , username: username };
+      const vars = { questions , username: username };
       console.log(username);
 
       res.render("quizAttempt", vars)
