@@ -11,11 +11,11 @@ module.exports = (db) => {
     WHERE quizzes.url = $1;`
     db.query(sql, [quizurl])
     .then(data => {
-      console.log(data.rows[0])
+
       const questions = data.rows;
       const username = req.cookies["username"];
       const vars = { questions , username: username };
-      console.log(username);
+
 
       res.render("quizAttempt", vars)
     })

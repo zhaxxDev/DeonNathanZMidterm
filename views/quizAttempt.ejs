@@ -29,9 +29,8 @@
 
     <div id="quiz-attempt-container">
       <h1 id="quiz-attempt-message">Attempt Quiz</h1>
-      <%= questions[1].name %>
+      <%= console.log(questions) %>
       <% for(let question of questions) { %>
-        <%= console.log(question) %>
       <section id="quiz-attempt">
           <form action="/results" method="POST">
           <div id="question-container" class="hide">

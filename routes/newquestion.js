@@ -7,10 +7,14 @@ module.exports = (db) => {
     const sql = `INSERT INTO questions (quiz_id, question, answerA, answerB, answerC, answerD, correct_answer)
     VALUES (
       $1, $2, $3, $4, $5, $6, $7);`;
-    let length=req.body.question.length
+    let length=req.body.answerA.length
     let paramsarr=[]
-    for (let i=0; i < length; i++) {
-      paramsarr[i] = [req.body.quiz_id, req.body.question[i], req.body.answerA[i], req.body.answerB[i], req.body.answerC[i], req.body.answerD[i], req.body[`correct_answer${i}`]]
+    if (length > 1){
+      for (let i=0; i < length; i++) {
+        paramsarr[i] = [req.body.quiz_id, req.body.question[i], req.body.answerA[i], req.body.answerB[i], req.body.answerC[i], req.body.answerD[i], req.body[`correct_answer${i}`]]
+      }
+    } else if (length === 1) {
+      paramsarr = [[req.body.quiz_id, req.body.question, req.body.answerA, req.body.answerB, req.body.answerC, req.body.answerD, req.body.correct_answer]]
     }
     console.log(paramsarr)
 
