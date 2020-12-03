@@ -112,3 +112,22 @@ button {
     }
   }
 }
+
+#navbarNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#links {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+#userID {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
