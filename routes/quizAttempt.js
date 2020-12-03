@@ -8,8 +8,9 @@ module.exports = (db) => {
     .then(data => {
       console.log(data.rows)
       const newquiz = data.rows;
-      const vars = { newquiz };
-      console.log(newquiz);
+      const username = req.cookies["username"];
+      const vars = { newquiz , username: username };
+      console.log(username);
 
       res.render("quizAttempt", vars)
     })
