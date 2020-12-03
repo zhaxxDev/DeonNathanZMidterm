@@ -26,20 +26,35 @@
     <!--Fixed header from the _partials/header-->
     <%- include partials/_header %>
 
-    <h1 id="welcome-message">Create a new Quiz</h1>
-    <section id="create_quiz">
-      <form action="/newquiz" method="POST">
-        <input placeholder="What is your name?: " type="text" id="name" name="name" class="option"><br><br>
-        <input placeholder="Please Name Your Quiz" type="text" id="quizname" name="quizname" class="option"><br><br>
-        <input placeholder="Custom URL" type="text" id="quizurl" name="quizurl" class="option"><br><br>
-        <p>Would you like your quiz to be public?</p>
-        <input type="radio" id="public" name="privacy" value=true>
-        <label for="public">Yes</label><br>
-        <input type="radio" id="private" name="privacy" value=false>
-        <label for="private">No</label><br>
+    <p>quiz id: <%= newquiz[0].id %></p>
+
+    <div id="quiz-attempt-container">
+      <h1 id="quiz-attempt-message">Attempt Quiz</h1>
+      <% for(let question of newquiz) { %>
+        <%= console.log(question) %>
+      <section id="quiz-attempt">
+          <form action="/results" method="POST">
+          <div id="question-container" class="hide">
+          <label class="question"> </label>
+
+            <div id="question"><%= question.question %></div>
+            <div id="answer-buttons" class="btn-grid">
+
+              <input type="radio" id="a" name="correct_answer" value='A'>
+              <label for="a"> <%= question.answera %> </label><br>
+              <input type="radio" id="b" name="correct_answer" value='B'>
+              <label for="b"> <%= question.answerb %> </label><br>
+              <input type="radio" id="a" name="correct_answer" value='C'>
+              <label for="c"> <%= question.answerc %> </label><br>
+              <input type="radio" id="b" name="correct_answer" value='D'>
+              <label for="d"> <%= question.answerd %> </label><br>
+            </div>
+          </div>
+          </form>
+        </section>
+        <% } %>
         <form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
-      </form>
-    </section>
+    </div>
 
 
 

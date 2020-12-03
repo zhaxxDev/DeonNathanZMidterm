@@ -78,6 +78,13 @@ app.get("/myquizzes", (req, res)=> {
   res.render("myquizzes", templateVars);
 })
 
+app.get("/results", (req, res)=> {
+  res.render("results");
+})
+app.get("/quizAttempt", (req, res)=> {
+  res.render("quizAttempt");
+})
+
 
 app.post("/login", (req, res) => {
   let useR = req.body.username;

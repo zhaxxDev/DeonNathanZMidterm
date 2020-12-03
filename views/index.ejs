@@ -21,13 +21,13 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
 
   </head>
-
+  <%- include partials/_header %>
   <body>
     <!--Fixed header from the _partials/header-->
-    <%- include partials/_header %>
-
+    <h1 id="welcome-message">Welcome to QuizApp</h1>
+      <br />
     <section id="welcome_page">
-      <h1>Welcome to QuizApp</h1>
+
       <form method="GET" action="/quizzes" >
         <button type="submit" class="quizzes">See All Quizzes</button>
       </form>
