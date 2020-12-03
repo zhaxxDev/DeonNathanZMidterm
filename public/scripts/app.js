@@ -26,6 +26,8 @@ const newQuestion = function(i) {
   return $newQuestion;
 }
 
+
+
 $(document).ready(function() {
   let i=1;
 $("#add-question-btn").click(function () {

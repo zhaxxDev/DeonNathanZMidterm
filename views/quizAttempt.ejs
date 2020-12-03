@@ -26,36 +26,36 @@
     <!--Fixed header from the _partials/header-->
     <%- include partials/_header %>
 
-    <p>quiz id: <%= newquiz[0].id %></p>
 
-    <div id="maindiv">
-    <section id="quizquestions">
-      <form action="/newquestion" method="POST">
-        <div id="questions">
-          <input placeholder="Enter Question" type="text" id="question" name="question"><br><br>
-          <input placeholder="Option A" type="text" class="option" id="answerA" name="answerA"><br><br>
-          <input placeholder="Option B" type="text" class="option" id="answerB" name="answerB"><br><br>
-          <input placeholder="Option C" type="text" class="option" id="answerC" name="answerC"><br><br>
-          <input placeholder="Option D" type="text" class="option" id="answerD" name="answerD"><br><br>
-          <P>Which answer is correct?</P>
-          <input type="radio" id="a0" name="correct_answer0" value='A'>
-          <label for="a0">A</label><br>
-          <input type="radio" id="b0" name="correct_answer0" value='B'>
-          <label for="b0">B</label><br>
-          <input type="radio" id="a0" name="correct_answer0" value='C'>
-          <label for="c0">C</label><br>
-          <input type="radio" id="b0" name="correct_answer0" value='D'>
-          <label for="d0">D</label><br>
-          <input type="hidden" id="quiz_id" name="quiz_id" value=<%= parseInt(newquiz[0].id) %> >
-        </div>
-        <form method="POST" action="/newquestions"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
-      </form>
-    </section>
+    <div id="quiz-attempt-container">
+      <h1 id="quiz-attempt-message">Attempt Quiz</h1>
+      <%= console.log(questions) %>
+      <% for(let question of questions) { %>
+      <section id="quiz-attempt">
+          <form action="/results" method="POST">
+          <div id="question-container" class="hide">
+          <label class="question"> </label>
+
+            <div id="question"><%= question.question %></div>
+            <div id="answer-buttons" class="btn-grid">
+
+              <input type="radio" id="a" name="correct_answer0" value='A'>
+              <label for="a"> <%= question.answera %> </label><br>
+              <input type="radio" id="b" name="correct_answer0" value='B'>
+              <label for="b"> <%= question.answerb %> </label><br>
+              <input type="radio" id="a" name="correct_answer0" value='C'>
+              <label for="c"> <%= question.answerc %> </label><br>
+              <input type="radio" id="b" name="correct_answer0" value='D'>
+              <label for="d"> <%= question.answerd %> </label><br>
+            </div>
+          </div>
+          </form>
+        </section>
+        <% } %>
+        <form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
     </div>
-    <div class="new-quiz-btns">
 
-      <button type="submit" id="add-question-btn" class="quizzes">Add Another Question</button></form>
-  </div>
+
 
 
 
