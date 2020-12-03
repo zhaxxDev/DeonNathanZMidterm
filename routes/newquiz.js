@@ -11,7 +11,7 @@ module.exports = (db) => {
        LIMIT 1)
        , $2, $3, $4)
        RETURNING *;`
-    const params = [req.body.name, req.body.quizname, req.body.quizurl, req.body.privacy];
+    const params = [req.cookies["username"], req.body.quizname, req.body.quizurl, req.body.privacy];
     db.query(sql ,params)
     .then(data => {
       console.log(data.rows)

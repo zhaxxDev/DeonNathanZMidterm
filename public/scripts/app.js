@@ -1,8 +1,7 @@
 //Creates the HTML template of a question
-const newQuestion = function() {
+const newQuestion = function(i) {
   let $newQuestion = $(`
        <section class="quizquestions">
-      <form action="/newquestion" method="POST">
         <label for="question">Enter Question</label>
         <input type="text" id="question" name="question"><br><br>
         <label for="answerA">Option A</label>
@@ -14,24 +13,25 @@ const newQuestion = function() {
         <label for="answerD">Option D</label>
         <input type="text" id="answerD" name="answerD"><br><br>
         <P>Which answer is correct?</P>
-        <input type="radio" id="a" name="correct_answer" value='A'>
-        <label for="a">A</label><br>
-        <input type="radio" id="b" name="correct_answer" value='B'>
-        <label for="b">B</label><br>
-        <input type="radio" id="a" name="correct_answer" value='C'>
-        <label for="c">C</label><br>
-        <input type="radio" id="b" name="correct_answer" value='D'>
-        <label for="d">D</label><br>
-      </form>
+        <input type="radio" id="a${i}" name="correct_answer${i}" value='A'>
+        <label for="a${i}">A</label><br>
+        <input type="radio" id="b${i}" name="correct_answer${i}" value='B'>
+        <label for="b${i}">B</label><br>
+        <input type="radio" id="a${i}" name="correct_answer${i}" value='C'>
+        <label for="c${i}">C</label><br>
+        <input type="radio" id="b${i}" name="correct_answer${i}" value='D'>
+        <label for="d${i}">D</label><br>
     </section>
   `);
   return $newQuestion;
 }
 
 $(document).ready(function() {
+  let i=1;
 $("#add-question-btn").click(function () {
-  let questionAppend = newQuestion();
+  let questionAppend = newQuestion(i);
   console.log('clicked');
-  $("#maindiv").append(questionAppend);
+  $("#questions").append(questionAppend);
+  i+=1;
 });
 });
