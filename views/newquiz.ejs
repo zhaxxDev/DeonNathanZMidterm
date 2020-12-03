@@ -31,20 +31,23 @@
     <div id="maindiv">
     <section id="quizquestions">
       <form action="/newquestion" method="POST">
-        <input placeholder="Enter Question" type="text" id="question" name="question"><br><br>
-        <input placeholder="Option A" type="text" class="option" id="answerA" name="answerA"><br><br>
-        <input placeholder="Option B" type="text" class="option" id="answerB" name="answerB"><br><br>
-        <input placeholder="Option C" type="text" class="option" id="answerC" name="answerC"><br><br>
-        <input placeholder="Option D" type="text" class="option" id="answerD" name="answerD"><br><br>
-        <P>Which answer is correct?</P>
-        <input type="radio" id="a" name="correct_answer" value='A'>
-        <label for="a">A</label><br>
-        <input type="radio" id="b" name="correct_answer" value='B'>
-        <label for="b">B</label><br>
-        <input type="radio" id="a" name="correct_answer" value='C'>
-        <label for="c">C</label><br>
-        <input type="radio" id="b" name="correct_answer" value='D'>
-        <label for="d">D</label><br>
+        <div id="questions">
+          <input placeholder="Enter Question" type="text" id="question" name="question"><br><br>
+          <input placeholder="Option A" type="text" class="option" id="answerA" name="answerA"><br><br>
+          <input placeholder="Option B" type="text" class="option" id="answerB" name="answerB"><br><br>
+          <input placeholder="Option C" type="text" class="option" id="answerC" name="answerC"><br><br>
+          <input placeholder="Option D" type="text" class="option" id="answerD" name="answerD"><br><br>
+          <P>Which answer is correct?</P>
+          <input type="radio" id="a0" name="correct_answer0" value='A'>
+          <label for="a0">A</label><br>
+          <input type="radio" id="b0" name="correct_answer0" value='B'>
+          <label for="b0">B</label><br>
+          <input type="radio" id="a0" name="correct_answer"0 value='C'>
+          <label for="c0">C</label><br>
+          <input type="radio" id="b0" name="correct_answer0" value='D'>
+          <label for="d0">D</label><br>
+          <input type="hidden" id="quiz_id" name="quiz_id" value=<%= parseInt(newquiz[0].id) %> >
+        </div>
       </form>
     </section>
     </div>
