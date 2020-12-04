@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
 
-$bg: #fff;
+$bg: rgb(214, 214, 214);
 $text: #382b22;
-$light-pink: #fff0f0;
-$pink: #ffe9e9;
-$dark-pink: #f9c4d2;
-$pink-border: #b18597;
-$pink-shadow: #ffe3e2;
+$light-pink: #c4c4c4;
+$pink: #7a7a7a;
+$dark-pink: #7c7c7c;
+$pink-border: #4e4e4e;
+$pink-shadow: #dbdbdb;
 
 * {
   box-sizing: border-box;
@@ -110,5 +110,34 @@ button {
       display: flex !important;
       justify-content: center;
     }
+  }
+}
+#userID {
+  color: white;
+}
+
+@media only screen and (min-width: 600px) {
+  #navbarNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #links {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  #navbarBG {
+    height: 80px;
+  }
+  #userID {
+    color: white;
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+  }
+  #userID h4 + form {
+    margin-left: 10px;
   }
 }
