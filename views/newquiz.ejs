@@ -30,7 +30,7 @@
 
     <div id="maindiv">
     <section id="quizquestions">
-      <form action="/newquestion" method="POST">
+      <form action="/newquestion" method="POST"id ="innerquiz">
         <div id="questions">
           <label for="question">Enter Question</label>
           <input type="text" id="question" name="question"><br><br>
@@ -55,12 +55,13 @@
         </div>
        <button type="submit" id="submit-btn" class="quizzes">Submit</button>
       </form>
-    </section>
-    </div>
-    <div class="new-quiz-btns">
+        <div class="new-quiz-btns" id="toomanyids">
+          <button type="submit" id="add-question-btn" class="quizzes">Add Another Question</button></form>
+        </div>
 
-      <button type="submit" id="add-question-btn" class="quizzes">Add Another Question</button></form>
-  </div>
+    </section>
+
+    </div>
 
 
 
