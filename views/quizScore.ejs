@@ -26,24 +26,11 @@
     <!--Fixed header from the _partials/header-->
     <%- include partials/_header %>
 
-    <section id="results_page">
+    <section id="score_page">
 
       <h1 id="results-header">Your Quiz Results</h1>
-      <table>
-        <tr>
-          <th>Quiz Name</th>
-          <th>Score</th>
-        </tr>
-      <% for (let attempt of quiz_attempts) { %>
-        <tr>
-          <td><%= attempt.quizname %></td>
-
-          <td><%= scores[`${attempt.id}`] %>/<%= totals[`${attempt.id}`] %></td>
-        </tr>
-
-        <% } %>
-
-    </table>
+      <p>Congratulations <%=quiztakersname%>! You scored <%= score %> / <%= total %> on <%= quizname %></p>
+      <p> Share your score <a href="/results/<%= quizresulturl %>">with this link!</a></p>
 
     </section>
 

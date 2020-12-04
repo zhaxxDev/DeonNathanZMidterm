@@ -37,7 +37,7 @@ module.exports = (db) => {
         } else {
           db.query (sql2, paramsarr[i])
           .then (data => {
-            res.render("index", vars)
+            res.redirect(`/results/${newurl}`)
           })
           .catch(err => {
             res
