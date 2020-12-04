@@ -27,9 +27,10 @@
     <%- include partials/_header %>
 
     <section id="results_page">
-
+      <% if (quiz_attempts) { %>
       <h1 id="results-header"><%= quiz_attempts[0].quizname %> Results</h1>
       <table>
+
         <tr>
           <th>Quiz Taker's Name</th>
           <th>Score</th>
@@ -43,8 +44,14 @@
 
         <% } %>
 
-    </table>
 
+    </table>
+    <% } else { %>
+      <h1>No one has taken this quiz yet!</h1>
+
+
+
+      <% } %>
     </section>
 
 

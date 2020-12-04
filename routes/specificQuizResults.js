@@ -25,6 +25,12 @@ module.exports = (db) => {
       FROM answer_submissions
       JOIN questions ON question_id = questions.id
       WHERE attempt_id = $1`
+      if (quiz_attempts.length === 0){
+        const templateVars = {
+          username, quiz_attempts: 0
+        }
+        res.render("specificQuizResults", templateVars)
+      }
 
       for (let i=0; i < quiz_attempts.length; i++) {
 

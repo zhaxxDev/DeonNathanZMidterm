@@ -30,7 +30,8 @@
     <section id="my_quizzes">
       <h1>My Quizzes</h1>
       <% for (let quiz of quizzes) { %>
-        <a href="/quiz/<%= quiz.url %>"><%= quiz.name %></a> <a href="/quiz/<%= quiz.url %>/results">View Results</a>
+        <a href="/quiz/<%= quiz.url %>"><%= quiz.name %></a><a href="/quiz/<%= quiz.url %>/results">View Results</a>
+        <br>
       <% } %>
     </section>
 
