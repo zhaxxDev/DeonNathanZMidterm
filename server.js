@@ -56,7 +56,6 @@ app.use ("/", newquizRoutes(db));
 app.use ("/", resultsRoutes(db));
 app.use ("/", newquestionRoutes(db));
 app.use ("/quiz/:quizurl/submit", submitQuizRoutes(db));
-
 app.use ("/", loginRoutes(db));
 app.use ("/", createQuizRoutes(db));
 app.use ("/", myquizzesRoutes(db));
