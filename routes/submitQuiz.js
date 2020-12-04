@@ -28,7 +28,7 @@ module.exports = (db) => {
           paramsarr[i] = [data.rows[0].id, parseInt(req.body.question_ids[i]), req.body[`answer${i+1}`]]
         }
       } else {
-        paramsarr = [[data.rows[0].id, 1, req.body.answer1]]
+        paramsarr = [[data.rows[0].id, parseInt(req.body.question_ids[0]), req.body.answer1]]
       }
 
       for (let i = 0; i < paramsarr.length; i++) {

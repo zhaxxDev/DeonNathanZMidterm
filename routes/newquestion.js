@@ -14,7 +14,7 @@ module.exports = (db) => {
         paramsarr[i] = [req.body.quiz_id, req.body.question[i], req.body.answerA[i], req.body.answerB[i], req.body.answerC[i], req.body.answerD[i], req.body[`correct_answer${i}`]]
       }
     } else {
-      paramsarr = [[req.body.quiz_id, req.body.question, req.body.answerA, req.body.answerB, req.body.answerC, req.body.answerD, req.body.correct_answer]]
+      paramsarr = [[req.body.quiz_id, req.body.question, req.body.answerA, req.body.answerB, req.body.answerC, req.body.answerD, req.body.correct_answer0]]
     }
     console.log(paramsarr)
 

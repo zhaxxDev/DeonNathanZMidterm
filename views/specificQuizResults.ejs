@@ -27,7 +27,7 @@
     <%- include partials/_header %>
 
     <section id="results_page">
-      <% if (quiz_attempts) { %>
+      <% if (quiz_attempts !== 0) { %>
       <h1 id="results-header"><%= quiz_attempts[0].quizname %> Results</h1>
       <table>
 

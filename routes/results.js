@@ -3,6 +3,9 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/results",(req, res) => {
+    if (!req.cookies["username"]){
+      res.status(400).json({ error: "Bad Request No User. Did you forget to enter your name?" })
+    }
     let scores = {};
     let totals = {};
     const username = req.cookies["username"];
