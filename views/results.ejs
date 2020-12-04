@@ -28,15 +28,10 @@
 
     <section id="results_page">
       <h1>Temp header for results</h1>
-      <% for(let i=0; i < quiz_result.length; i++) { %>
-        <%= console.log(quiz_result[i]) %>
-      <% if (quiz_result[i].name === username) { %>
-      <%=quiz_result[i].id%> You scored <%= quiz_result[i].score %> out of
-      <%= quiz_total[i].out_of %> on the quiz <%= quiz_result[i].quizname %>
-
+      <% for (let attempt of quiz_attempts) { %>
       <br><br>
-      <% } %>
-      <% } %>
+       <%= attempt.quizname %>   <%= scores[`${attempt.id}`] %>/<%= totals[`${attempt.id}`] %>
+        <% } %>
       <br><br>
 
     </section>
