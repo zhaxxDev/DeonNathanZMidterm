@@ -27,13 +27,13 @@
           <% if (username) {%>
             <h4><%=username%></h4>
             <form class="form-inline" action='/logout' method='POST'>
-            <button type="submit" class="btn btn-primary">ChangeUser</button>
+            <button type="submit" class="btn btn-primary">Change User</button>
             </form>
             <%} else { %>
           <form class="form-inline" action='/login' method="POST">
             <div class="form-group mb-2">
               <input class="form-control" type="text" name="username" placeholder="Enter your Name" style="width: 300px; margin: 1em">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" id="header-button">Submit</button>
             </div>
           </form>
           <% } %>

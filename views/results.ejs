@@ -27,7 +27,7 @@
     <%- include partials/_header %>
 
     <section id="results_page">
-      <h1>Temp header for results</h1>
+      <h1 id="results-header">Results</h1>
       <% for (let attempt of quiz_attempts) { %>
       <br><br>
        <%= attempt.quizname %>   <%= scores[`${attempt.id}`] %>/<%= totals[`${attempt.id}`] %>

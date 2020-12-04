@@ -11,7 +11,7 @@ module.exports = (db) => {
     .then(data => {
       const quizzes = data.rows;
       let templateVars = {quizzes: quizzes, username: req.cookies["username"], id}
-      res.render("quizzes", templateVars);
+      res.render("myquizzes", templateVars);
     })
     .catch(err => {
       res
