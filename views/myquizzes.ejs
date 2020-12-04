@@ -27,7 +27,7 @@
     <%- include partials/_header %>
 
     <section id="all_quizzes">
-      <h1>All of your quizzes rendered here</h1>
+      <h1>My Quizzes</h1>
       <% for (let quiz of quizzes) { %>
         <% if (quiz.user_id === id) %>
         <a href="/quiz/<%= quiz.url %>"><%= quiz.name %></a>
