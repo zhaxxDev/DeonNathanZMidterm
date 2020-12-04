@@ -14,7 +14,7 @@ module.exports = (db) => {
     db.query(sql1, params1)
     .then(data => {
       const quiz_attempts = data.rows;
-      console.log('attempts', quiz_attempts)
+
       let sql2 = `SELECT COUNT(*), quiz_id FROM questions
       GROUP BY quiz_id
       HAVING quiz_id = $1`
@@ -30,13 +30,13 @@ module.exports = (db) => {
           .then(data => {
             const total = data.rows[0].count;
             let attempt_id = quiz_attempts[i].id;
-            console.log(attempt_id, 'dats da atmntid')
+
             db.query(sql3, [attempt_id])
             .then(data => {
               let answers = data.rows
               let score = 0
               for (let answer in answers) {
-                console.log(answer.answer)
+
                 if (answer.answer === answer.correct_answer) {
                   score += 1
                 }
@@ -58,10 +58,10 @@ module.exports = (db) => {
             db.query(sql3, [attempt_id])
             .then(data => {
               let answers = data.rows
-              console.log(answers[0])
+
               let score = 0
               for (let answer of answers) {
-                console.log(answer.answer)
+
                 if (answer.answer === answer.correct_answer) {
                   score += 1
                 }
@@ -74,7 +74,7 @@ module.exports = (db) => {
                 scores,
                 totals
               }
-              console.log("templatevars", templatevars)
+
               res.render("results", templatevars)
             })
             .catch(err => {
