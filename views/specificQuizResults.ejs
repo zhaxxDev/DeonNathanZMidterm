@@ -26,14 +26,26 @@
     <!--Fixed header from the _partials/header-->
     <%- include partials/_header %>
 
+    <section id="results_page">
 
-    <section id="my_quizzes">
-      <h1>My Quizzes</h1>
-      <% for (let quiz of quizzes) { %>
-        <a href="/quiz/<%= quiz.url %>"><%= quiz.name %></a> <a href="/quiz/<%= quiz.url %>/results">View Results</a>
-      <% } %>
+      <h1 id="results-header"><%= quiz_attempts[0].quizname %> Results</h1>
+      <table>
+        <tr>
+          <th>Quiz Taker's Name</th>
+          <th>Score</th>
+        </tr>
+      <% for (let attempt of quiz_attempts) { %>
+        <tr>
+          <td> <%= attempt.name %></td>
+
+          <td><%= scores[`${attempt.id}`] %>/<%= totals[`${attempt.id}`] %></td>
+        </tr>
+
+        <% } %>
+
+    </table>
+
     </section>
-
 
 
 
