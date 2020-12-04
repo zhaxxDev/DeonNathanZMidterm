@@ -1,6 +1,7 @@
 //Creates the HTML template of a question
 const newQuestion = function(i) {
   let $newQuestion = $(`
+       <br>
        <section class="quizquestions">
         <label for="question">Enter Question</label>
         <input type="text" id="question" name="question"><br><br>

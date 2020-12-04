@@ -13,7 +13,6 @@ module.exports = (db) => {
     .then(data => {
 
       const questions = data.rows;
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', questions[0]);
       const username = req.cookies["username"];
       const vars = { questions , username: username };
 
