@@ -29,30 +29,38 @@
 
     <div id="quiz-attempt-container">
       <h1 id="quiz-attempt-message">Attempt Quiz</h1>
-      <%= console.log(questions) %>
+      <form action="/quiz/:quizurl/submit" method="POST" id="questionform">
+      <%= console.log('before for loop', questions[0]) %>
+        <input type="hidden" id="quiz_id" name="quiz_id" value=<%= parseInt(questions[0].quiz_id) %> >
+      <% let i = 0 %>
       <% for(let question of questions) { %>
       <section id="quiz-attempt">
-          <form action="/results" method="POST">
+
           <div id="question-container" class="hide">
           <label class="question"> </label>
 
             <div id="question"><%= question.question %></div>
             <div id="answer-buttons" class="btn-grid">
+              <input type="hidden" id="<%=`question_id`%>" name="<%=`question_ids`%>" value=<%= parseInt(questions[i].id) %> >
 
-              <input type="radio" id="a" name="correct_answer0" value='A'>
-              <label for="a"> <%= question.answera %> </label><br>
-              <input type="radio" id="b" name="correct_answer0" value='B'>
-              <label for="b"> <%= question.answerb %> </label><br>
-              <input type="radio" id="a" name="correct_answer0" value='C'>
-              <label for="c"> <%= question.answerc %> </label><br>
-              <input type="radio" id="b" name="correct_answer0" value='D'>
-              <label for="d"> <%= question.answerd %> </label><br>
+              <input type="radio" id="<%=`a${i}`%>" name="<%=`answer${i+1}`%>" value='A'>
+              <label for="<%=`a${i}`%>"> <%= question.answera %> </label><br>
+              <input type="radio" id="<%=`b${i}`%>" name="<%=`answer${i+1}`%>" value='B'>
+              <label for="<%=`b${i}`%>"> <%= question.answerb %> </label><br>
+              <input type="radio" id="<%=`c${i}`%>" name="<%=`answer${i+1}`%>" value='C'>
+              <label for="<%=`c${i}`%>"> <%= question.answerc %> </label><br>
+              <input type="radio" id="<%=`d${i}`%>" name= "<%=`answer${i+1}`%>" value='D'>
+              <label for="<%=`d${i}`%>"> <%= question.answerd %> </label><br>
             </div>
           </div>
-          </form>
+
         </section>
+        <% i+=1; %>
         <% } %>
-        <form method="POST" action="/quizzes"><button type="submit" id="submit-btn" class="quizzes">Submit</button></form>
+        <%= console.log(questions[0]) %>
+
+        <button form="questionform" type="submit" id="submit-btn" class="quizzes">Submit</button>
+      </form>
     </div>
 
 

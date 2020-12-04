@@ -1,25 +1,51 @@
 const express = require('express');
 const router  = express.Router();
+const generateRandomString = function() {
+  return Math.random().toString(36).substr(2,6);
+}
+
 
 module.exports = (db) => {
-  router.post("/quizzes",(req, res) => {
-    const sql = `INSERT INTO questions (quiz_id, question)
-     VALUES (
-      (SELECT id
-      FROM quizzes
-      WHERE user_id = users.id;
-      LIMIT 1),
-      $1)
-      RETURNING *;`
-    const params = [req.body.question];
-    console.log(params)
-    db.query(sql, params)
-    .then(data => {
-      console.log(data.rows)
-      const submitquiz = data.rows;
-      const vars = { submitquiz };
+  router.post("/",(req, res) => {
+    console.log('body is here', req.body)
+    const sql1 = `INSERT INTO quiz_attempts (user_id, quiz_id, url)
+     VALUES ($1, $2, $3)
+     RETURNING quiz_attempts.id`
+    const newurl = generateRandomString();
+    const params1 = [req.cookies.id, req.body.quiz_id, newurl];
+    console.log('params1', params1)
 
-      res.render("quizzes", vars)
+    const vars = { username: req.cookies.username }
+    db.query(sql1, params1)
+    .then(data => {
+
+      const sql2 = `INSERT INTO answer_submissions (attempt_id, question_id, answer)
+      VALUES ($1, $2, $3)`
+      let paramsarr = []
+
+      if (Array.isArray(req.body.question_ids)){
+        for (let i=0; i < req.body.question_ids.length; i++) {
+          paramsarr[i] = [data.rows[0].id, parseInt(req.body.question_ids[i]), req.body[`answer${i+1}`]]
+        }
+      } else {
+        paramsarr = [[data.rows[0].id, 1, req.body.answer1]]
+      }
+
+      for (let i = 0; i < paramsarr.length; i++) {
+        if (i !== paramsarr.length - 1) {
+          db.query(sql2, paramsarr[i]);
+        } else {
+          db.query (sql2, paramsarr[i])
+          .then (data => {
+            res.render("index", vars)
+          })
+          .catch(err => {
+            res
+            .status(500)
+            .json({ error: err.message });
+          })
+        }
+      }
     })
     .catch(err => {
       res

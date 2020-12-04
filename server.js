@@ -41,6 +41,7 @@ const newquizRoutes = require("./routes/newquiz");
 const resultsRoutes = require("./routes/results");
 const newquestionRoutes = require("./routes/newquestion");
 const quizAttemptRoutes = require("./routes/quizAttempt");
+const submitQuizRoutes = require("./routes/submitQuiz");
 
 const { user } = require('pg/lib/defaults');
 // Mount all resource routes
@@ -51,6 +52,7 @@ app.use ("/", quizzesRoutes(db));
 app.use ("/", newquizRoutes(db));
 app.use ("/", resultsRoutes(db));
 app.use ("/", newquestionRoutes(db));
+app.use ("/quiz/:quizurl/submit", submitQuizRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 
@@ -118,7 +120,7 @@ app.post("/logout", (req, res) => {
   res.redirect('/')
 });
 
-app.use ("/", quizAttemptRoutes(db));
+app.use ("/quiz", quizAttemptRoutes(db));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
